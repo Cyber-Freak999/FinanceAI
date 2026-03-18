@@ -15,3 +15,5 @@ dist/
 .env
 *.db
 *.sqlite
+alembic/versions/__pycache__/
+*.sqlite3
