@@ -13,3 +13,5 @@ dist/
 # Virtual environments
 .venv
 .env
+*.db
+*.sqlite
