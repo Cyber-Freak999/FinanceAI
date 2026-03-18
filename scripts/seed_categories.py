@@ -14,15 +14,21 @@ DEFAULT_CATEGORIES = [
 ]
 
 
-def seed():
-    db = SessionLocal()
+def seed(db=None):
+    closes_after = False
+    if db is None:
+        db = SessionLocal()
+        closes_after = True
+
     for name in DEFAULT_CATEGORIES:
         exists = db.query(Category).filter_by(name=name).first()
         if not exists:
             db.add(Category(name=name, is_system=True))
     db.commit()
-    db.close()
-    print("Categories seeded.")
+
+    if closes_after:
+        db.close()
+        print("Categories seeded.")
 
 
 if __name__ == "__main__":
